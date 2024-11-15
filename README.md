@@ -3,17 +3,17 @@
 Se utiliza la API pública: https://api.escuelajs.co/api/v1/users
 
 <div align='center'>
-    <img  src="src/assets/img-reporte/img1.png" width="300">
+    <img  src="src/assets/img-reporte/img1.png" width="50%">
     <p>Servicio usuario para consumir el api</p>
 </div>
 
 <div align='center'>
-    <img  src="src/assets/img-reporte/img2.png" width="300">
+    <img  src="src/assets/img-reporte/img2.png" width="50%">
     <p>Agregacion de HttpClientModule para realizar peticiones HTTP</p>
 </div>
 
 <div align='center'>
-    <img  src="src/assets/img-reporte/img3.png" width="300">
+    <img  src="src/assets/img-reporte/img3.png" width="50%">
     <p>Metodo para consumir el servicio</p>
 </div>
 
