@@ -88,7 +88,7 @@ Podrías añadir APIs de autenticación, geolocalización, pagos, redes sociales
 
 # Ejercicio Login - Consumir APIS de terceros
 
-Para este ejercicio se continuara consumiendo la APi anteriormente mencionada: https://api.escuelajs.co/api/v1/users
+Para este ejercicio se continuara consumiendo la API anteriormente mencionada: https://api.escuelajs.co/api/v1/users
 
 <div align='center'>
     <img  src="src/assets/img-reporte/img1.png" width="80%">
@@ -107,7 +107,7 @@ Para este ejercicio se continuara consumiendo la APi anteriormente mencionada: h
 
 ## Componente Login
 
-### Html necesario en el formulario del Login
+### Html necesario en el formulario de Login
 
 <div align='center'>
     <img  src="src/assets/img-reporte/img4.png" width="80%">
@@ -118,13 +118,13 @@ Este código es una estructura de HTML con Angular Material para crear un formul
 
 1. Contenedor principal:
     - div class="login-container": Es el contenedor principal que incluye dos secciones:
-        - izquierdo: Un bloque vacío (posiblemente para diseño o imágenes).
+        - izquierdo: para una imagen.
         - derecho: Contiene el formulario de inicio de sesión.
 2. Tarjeta del formulario:
-    - Usa un <mat-card> para organizar visualmente el formulario.
-    - mat-card-header>: Incluye un título "Iniciar Sesión".
+    - Usa un mat-card para organizar visualmente el formulario.
+    - mat-card-header: Incluye un título "Iniciar Sesión".
 3. Formulario:
-    - <form>: Está vinculado al formulario reactivo loginForm de Angular a través de [formGroup].
+    - form: Está vinculado al formulario reactivo loginForm de Angular a través de [formGroup].
     - (ngSubmit)="onSubmit()": Llama al método onSubmit() cuando se envía el formulario.
 3. Campos de entrada:
     - Correo:
@@ -176,7 +176,7 @@ Se utilizo SweetAlert2: https://sweetalert2.github.io/#download
     <p>Mensaje de Error</p>
 </div>
 
-### Notificacion de error al ingresar
+### Notificacion de exito al ingresar
 
 <div align='center'>
     <img  src="src/assets/img-reporte/img8.png" width="80%">
