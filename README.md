@@ -90,26 +90,34 @@ Podrías añadir APIs de autenticación, geolocalización, pagos, redes sociales
 
 Para este ejercicio se continuara consumiendo la APi anteriormente mencionada: https://api.escuelajs.co/api/v1/users
 
-<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-    <img src="src/assets/img-reporte/img1.png" width="30%">
-    <img src="src/assets/img-reporte/img2.png" width="30%">
-    <img src="src/assets/img-reporte/img3.png" width="30%">
+<div align='center'>
+    <img  src="src/assets/img-reporte/img1.png" width="80%">
+    <p>Servicio para consumir el API</p>
 </div>
 
-Por lo que se mantendra el codigo anteriormente explicado
+<div align='center'>
+    <img  src="src/assets/img-reporte/img1.png" width="80%">
+    <p>Agregacion de HttpClientModule para realizar peticiones HTTP</p>
+</div>
+
+<div align='center'>
+    <img  src="src/assets/img-reporte/img1.png" width="80%">
+    <p>Metodo para consumir el servicio</p>
+</div>
 
 ## Componente Login
-<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-    <img src="src/assets/img-reporte/img4.png" width="40%">
-    <img src="src/assets/img-reporte/img5.png" width="40%">
-</div>
 
 ### Html necesario en el formulario del Login
+
+<div align='center'>
+    <img  src="src/assets/img-reporte/img4.png" width="80%">
+    <p>Metodo para consumir el servicio</p>
+</div>
 
 Este código es una estructura de HTML con Angular Material para crear un formulario de inicio de sesión con diseño dividido en dos secciones: una izquierda y otra derecha.
 
 1. Contenedor principal:
-    - <div class="login-container">: Es el contenedor principal que incluye dos secciones:
+    - div class="login-container": Es el contenedor principal que incluye dos secciones:
         - izquierdo: Un bloque vacío (posiblemente para diseño o imágenes).
         - derecho: Contiene el formulario de inicio de sesión.
 2. Tarjeta del formulario:
@@ -124,11 +132,16 @@ Este código es una estructura de HTML con Angular Material para crear un formul
         - Vinculado al control email del formulario reactivo (formControlName="email").
     - Contraseña:
         - Campo de entrada similar, vinculado al control password.
-5. otón de envío:
+5. Botón de envío:
     - Botón de tipo submit con estilo de Angular Material (mat-raised-button).
     - Deshabilitado si el formulario es inválido ([disabled]="loginForm.invalid").
 
 ### Codigo para validar las credenciales ingresadas
+
+<div align='center'>
+    <img  src="src/assets/img-reporte/img5.png" width="80%">
+    <p>Metodo para consumir el servicio</p>
+</div>
 
 Este código define la lógica para manejar el inicio de sesión en una aplicación.
 
@@ -152,12 +165,24 @@ Este código define la lógica para manejar el inicio de sesión en una aplicaci
     <p>Interfaz de Inicio de Sesion</p>
 </div>
 
-## Notificacion de error o exito al ingresar
-<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-    <img src="src/assets/img-reporte/img7.png" width="40%">
-    <img src="src/assets/img-reporte/img8.png" width="40%">
-</div>
+## Notificaciones 
+
 Se utilizo SweetAlert2: https://sweetalert2.github.io/#download
+
+### Notificacion de error al ingresar
+
+<div align='center'>
+    <img  src="src/assets/img-reporte/img7.png" width="80%">
+    <p>Mensaje de Error</p>
+</div>
+
+### Notificacion de error al ingresar
+
+<div align='center'>
+    <img  src="src/assets/img-reporte/img8.png" width="80%">
+    <p>Mensaje de Exito</p>
+</div>
+
 
 ## Ventana mostrada despues de iniciar sesion 
 <div align='center'>
