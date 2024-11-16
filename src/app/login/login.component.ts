@@ -6,6 +6,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { Usuario } from '../models/usuario';
+import { UsuariosService } from '../services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -21,29 +24,71 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  usuarios: Usuario[];
 
   constructor(private fb: FormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+    private usuarioService: UsuariosService
+  ) { }
 
   ngOnInit(): void {
+    this.obtenerUsuarios();
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      console.log('Usuario:', username);
+      const { email, password } = this.loginForm.value;
+      console.log('Usuario:', email);
       console.log('Contraseña:', password);
       // Aquí puedes agregar la lógica para autenticar al usuario
-      this.router.navigate(['dashboard']);
+      let entrada = false;
+      for (let user of this.usuarios) {
+        if (user.email === email && user.password === password) {
+          entrada = true;
+          break;
+        }
+      }
+
+      if (entrada) {
+        console.log("Se ingreso correctamente")
+        Swal.fire({
+          title: "Credenciales Correctas",
+          text: "Has iniciado Sesion correctamente",
+          icon: "success"
+        }).then( () => {
+          this.router.navigate(['dashboard']);
+        })
+        
+      } else {
+        console.log("datos erroneos");
+        Swal.fire({
+          icon: "error",
+          title: "Credencial Erronea",
+          text: "Verifica tu Email & Password!",
+        });
+      }
     }
+  }
+
+  obtenerUsuarios() {
+    console.log('entramos al metodo')
+    this.usuarioService.obtenerUsuario().subscribe(
+      {
+        next: (datos) => {
+          this.usuarios = datos;
+        },
+        error: (errores) => {
+          console.log(errores)
+        }
+      }
+    );
   }
 
 }

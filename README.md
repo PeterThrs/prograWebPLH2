@@ -7,15 +7,63 @@ Se utiliza la API pública: https://api.escuelajs.co/api/v1/users
     <p>Servicio usuario para consumir el api</p>
 </div>
 
+HttpClient: Es un servicio que permite realizar solicitudes HTTP (GET, POST, PUT, DELETE, etc.) desde tu aplicación Angular.
+
+Injectable: Marca esta clase como un servicio que puede ser inyectado en otros componentes o servicios de Angular mediante el sistema de Inyección de Dependencias. Al declararlo con providedIn: 'root', Angular se encarga de instanciar este servicio como un singleton (única instancia para toda la app).
+
+Observable: Forma parte de rxjs (Reactive Extensions for JavaScript) y es el patrón que Angular usa para manejar flujos de datos asincrónicos, como las respuestas HTTP.
+
+urlBase: Define la URL base de la API que se consumirá. Es una buena práctica usar variables para las URLs en lugar de hardcodearlas en cada método.
+
+Firma del método:
+
+    Devuelve un Observable<Usuario[]>, lo que significa que este método no retorna los datos inmediatamente, sino que proporciona un stream que emite los datos cuando están disponibles.
+    El tipo Usuario[] indica que se espera una respuesta en forma de un array de objetos del tipo Usuario.
+
+Llamada HTTP:
+
+    this.clienteHttp.get<Usuario[]>(this.urlBase):
+    Usa el método get del servicio HttpClient para realizar una solicitud HTTP GET a la API.
+    El tipo genérico <Usuario[]> le indica a TypeScript qué tipo de datos espera de la respuesta (un array de usuarios).
+    this.urlBase: La URL a la que se envía la solicitud.
+
+Retorno:
+
+    return: Devuelve el observable generado por HttpClient. Este observable puede ser suscrito por cualquier componente o servicio que necesite usar los datos.
+
+
 <div align='center'>
     <img  src="src/assets/img-reporte/img2.png" width="50%">
     <p>Agregacion de HttpClientModule para realizar peticiones HTTP</p>
 </div>
 
+Explicación del provideHttpClient
+    provideHttpClient(withFetch()): Configura HttpClient para usar la API Fetch. Esto puede ser útil para aprovechar las capacidades modernas de Fetch API, como mejores promesas y soporte para streams.
+
+    provideHttpClient(): Simplemente proporciona HttpClient sin ninguna configuración adicional.
+
+    Ambos se aseguran de que HttpClient esté disponible en toda tu aplicación, permitiéndote hacer solicitudes HTTP desde tus servicios.
+
 <div align='center'>
     <img  src="src/assets/img-reporte/img3.png" width="50%">
     <p>Metodo para consumir el servicio</p>
 </div>
+
+En el código se muestra cómo un componente en Angular utiliza el servicio para consumir una API y manejar los datos obtenidos.
+
+ngOnInit
+    ngOnInit(): Método del ciclo de vida del componente que se ejecuta automáticamente después de que Angular ha inicializado el componente.
+    Dentro de ngOnInit, se llama al método obtenerUsuarios para cargar los datos cuando el componente se inicializa.
+
+subscribe
+    subscribe: Escucha las respuestas del observable.
+        next: Se ejecuta si la solicitud es exitosa.
+            Asigna los datos obtenidos (datos) a las propiedades:
+                this.usuarios: Almacena los usuarios obtenidos.
+                this.dataSource.data: Si se está utilizando una tabla (como Angular Material), actualiza los datos para mostrar en el frontend.
+        error: Maneja errores si la solicitud falla.
+
+
 
 ## Preguntas
 
