@@ -62,8 +62,6 @@ Se utiliza la API pública: https://api.escuelajs.co/api/v1/users
                 - this.dataSource.data: Si se está utilizando una tabla (como Angular Material), actualiza los datos para mostrar en el frontend.
         - error: Maneja errores si la solicitud falla.
 
-
-
 ## Preguntas
 
 ¿Qué hace el método getUsers en este servicio?
@@ -86,3 +84,87 @@ Separar estas lógicas permite que los componentes sean más manejables y modula
 
 ¿Qué otros tipos de datos o APIs podrías integrar en un proyecto como este?
 Podrías añadir APIs de autenticación, geolocalización, pagos, redes sociales o análisis. Estas integraciones aportan funciones adicionales que enriquecen la experiencia del usuario y amplían las capacidades del proyecto.
+
+
+# Ejercicio Login - Consumir APIS de terceros
+
+Para este ejercicio se continuara consumiendo la APi anteriormente mencionada: https://api.escuelajs.co/api/v1/users
+
+<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+    <img src="src/assets/img-reporte/img1.png" width="30%">
+    <img src="src/assets/img-reporte/img2.png" width="30%">
+    <img src="src/assets/img-reporte/img3.png" width="30%">
+</div>
+
+Por lo que se mantendra el codigo anteriormente explicado
+
+## Componente Login
+<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+    <img src="src/assets/img-reporte/img4.png" width="40%">
+    <img src="src/assets/img-reporte/img5.png" width="40%">
+</div>
+
+### Html necesario en el formulario del Login
+
+Este código es una estructura de HTML con Angular Material para crear un formulario de inicio de sesión con diseño dividido en dos secciones: una izquierda y otra derecha.
+
+1. Contenedor principal:
+    - <div class="login-container">: Es el contenedor principal que incluye dos secciones:
+        - izquierdo: Un bloque vacío (posiblemente para diseño o imágenes).
+        - derecho: Contiene el formulario de inicio de sesión.
+2. Tarjeta del formulario:
+    - Usa un <mat-card> para organizar visualmente el formulario.
+    - mat-card-header>: Incluye un título "Iniciar Sesión".
+3. Formulario:
+    - <form>: Está vinculado al formulario reactivo loginForm de Angular a través de [formGroup].
+    - (ngSubmit)="onSubmit()": Llama al método onSubmit() cuando se envía el formulario.
+3. Campos de entrada:
+    - Correo:
+        - Usa un campo de entrada con Angular Material (mat-form-field).
+        - Vinculado al control email del formulario reactivo (formControlName="email").
+    - Contraseña:
+        - Campo de entrada similar, vinculado al control password.
+5. otón de envío:
+    - Botón de tipo submit con estilo de Angular Material (mat-raised-button).
+    - Deshabilitado si el formulario es inválido ([disabled]="loginForm.invalid").
+
+### Codigo para validar las credenciales ingresadas
+
+Este código define la lógica para manejar el inicio de sesión en una aplicación.
+
+1. Validación del formulario:
+    - Comprueba si el formulario de inicio de sesión (loginForm) es válido usando this.loginForm.valid.
+    - Si es válido, extrae los valores de email y password del formulario.
+2. Verificación de credenciales:
+    - Itera sobre la lista de usuarios (this.usuarios) para comprobar si existe un usuario con un correo (email) y contraseña (password) que coincidan.
+    - Si encuentra una coincidencia:
+        - Establece entrada = true y detiene la búsqueda.
+3. Manejo de resultados:
+    - Si las credenciales son correctas (entrada === true):
+        - Muestra un mensaje de éxito con SweetAlert2.
+        - Redirige al usuario al dashboard usando this.router.navigate(['dashboard']) después de confirmar el mensaje.
+    - Si las credenciales son incorrectas:
+        - Muestra un mensaje de error con SweetAlert2 indicando que los datos son incorrectos.
+
+## Resultado Final de la Vista Login 
+<div align='center'>
+    <img  src="src/assets/img-reporte/img6.png" width="80%">
+    <p>Interfaz de Inicio de Sesion</p>
+</div>
+
+## Notificacion de error o exito al ingresar
+<div align="center" style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+    <img src="src/assets/img-reporte/img7.png" width="40%">
+    <img src="src/assets/img-reporte/img8.png" width="40%">
+</div>
+Se utilizo SweetAlert2: https://sweetalert2.github.io/#download
+
+## Ventana mostrada despues de iniciar sesion 
+<div align='center'>
+    <img  src="src/assets/img-reporte/img9.png" width="80%">
+    <p>Ventana de Inicio</p>
+</div>
+En esta ventana se listan los usuarios que se encuentran en la API. 
+
+
+
