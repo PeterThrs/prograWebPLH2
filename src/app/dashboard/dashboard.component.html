@@ -2,7 +2,11 @@
 <mat-toolbar color="primary">
   <span>Inicio</span>
   <span class="spacer"></span>
+  <button mat-button routerLink="usuarios" >Usuarios</button>
+  <button mat-button routerLink="peliculas" >Peliculas</button>
   <button mat-button (click)="salir()">Salir</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
+
+<!-- <app-tabla-peliculas></app-tabla-peliculas> -->

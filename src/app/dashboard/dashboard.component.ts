@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { TablaPeliculasComponent } from './tabla-peliculas/tabla-peliculas.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent } from './modal/modal.component';
+import { GuardarLocalService } from '../services/guardar-local.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,17 +15,25 @@ import { Router, RouterOutlet } from '@angular/router';
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    RouterOutlet
+    RouterOutlet,
+    MatButtonModule, 
+    MatDialogModule,
+    RouterLink
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
 
-  constructor(private router: Router){}
+  constructor(private router: Router, 
+    private localService: GuardarLocalService
+  ){}
 
   salir(){
     this.router.navigate(['login'])
+    this.localService.removeList('peliculas-eliminadas');
   }
+
+  
 
 }
