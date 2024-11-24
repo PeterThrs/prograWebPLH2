@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, inject, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, inject, OnInit, Output, ViewChild } from '@angular/core';
 import { PeliculaService } from '../../services/pelicula.service';
 import { map } from 'rxjs';
 import { Pelicula } from '../../models/pelicula';
@@ -39,6 +39,9 @@ export class TablaPeliculasComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.dataSource.filterPredicate = (data: Pelicula, filter: string) => {
+      return data.titulo.toLowerCase().includes(filter.trim().toLowerCase());
+    };
     this.obtenerPeliculas();
   }
 
@@ -100,20 +103,27 @@ export class TablaPeliculasComponent implements OnInit, AfterViewInit {
       data: { pelicula, edicion }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    dialogRef.afterClosed().subscribe((peliculaActualizada: Pelicula | undefined) => {
+      console.log(`Dialog result: ${peliculaActualizada}`);
+      if (peliculaActualizada) {
+        const index = this.peliculas.findIndex(p => p.id === peliculaActualizada.id);
+        this.peliculas[index] = peliculaActualizada;
+      }
+      console.log(this.peliculas);
+      this.dataSource.data = this.peliculas;
     });
   }
 
   eliminar(pelicula: Pelicula) {
     Swal.fire({
       title: "¿Estas Seguro?",
-      text: "¡No podras Revertir la acccion!",
+      text: "¡No podras Revertir la accion!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "¡Si, eliminar!"
+      confirmButtonText: "¡Si, eliminar!",
+      cancelButtonText: "Cancelar"
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({

@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-modal',
@@ -36,13 +37,22 @@ export class ModalComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, 
   private dialogRef: MatDialogRef<ModalComponent>){
-    this.pelicula = data.pelicula;
+    this.pelicula = structuredClone(data.pelicula) || JSON.parse(JSON.stringify(data.pelicula));
     this.isEditMode = data.edicion;
   }
 
   onSubmit() {
-    console.log('Datos guardados:', this.pelicula);
-    this.dialogRef.close(this.pelicula);
+    Swal.fire({
+      title: "¡Pelicula Actualizada!",
+      text: "¡Datos aceptados!",
+      icon: "success"
+    }).then(() => {
+      // this.data.pelicula = this.pelicula;
+      // console.log(this.data.pelicula);
+      console.log('Datos guardados:', this.pelicula);
+      this.dialogRef.close(this.pelicula);
+    });
+    
   }
 
   onClose() {

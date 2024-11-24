@@ -38,15 +38,15 @@
 } @else {
 <h2 mat-dialog-title class="modal-title">Editar</h2>
 <mat-dialog-content class="mat-typography modal-container">
-  <form *ngIf="isEditMode" (ngSubmit)="onSubmit()" #peliculaForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #peliculaForm="ngForm">
     <!-- Título -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Título</mat-label>
       <input matInput [(ngModel)]="pelicula.titulo" name="titulo" required />
     </mat-form-field>
 
     <!-- Título Original -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Título Original</mat-label>
       <input
         matInput
@@ -57,7 +57,7 @@
     </mat-form-field>
 
     <!-- Descripción -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Descripción</mat-label>
       <textarea
         matInput
@@ -68,7 +68,7 @@
     </mat-form-field>
 
     <!-- Fecha de Lanzamiento -->
-    <!-- <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="outline">
       <mat-label>Fecha de Lanzamiento</mat-label>
       <input
         matInput
@@ -82,7 +82,7 @@
     </mat-form-field> -->
 
     <!-- Idioma Original -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Idioma Original</mat-label>
       <input
         matInput
@@ -93,7 +93,7 @@
     </mat-form-field>
 
     <!-- Popularidad -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Popularidad</mat-label>
       <input
         matInput
@@ -105,7 +105,7 @@
     </mat-form-field>
 
     <!-- Promedio de Votos -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Promedio de Votos</mat-label>
       <input
         matInput
@@ -118,7 +118,7 @@
     </mat-form-field>
 
     <!-- Conteo de Votos -->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>Conteo de Votos</mat-label>
       <input
         matInput
@@ -149,11 +149,9 @@
       >
         Guardar
       </button>
-      <button mat-button color="warn" (click)="onClose()">Cancelar</button>
+      <button type="button" mat-button color="warn" (click)="onClose()">Cancelar</button>
     </mat-dialog-actions>
-
   </form>
 </mat-dialog-content>
-
 
 }

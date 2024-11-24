@@ -1,8 +1,8 @@
 <div class="container">
     <h2>Lista de Peliculas</h2>
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    <mat-form-field appearance="outline">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese su busqueda" #input >
     </mat-form-field>
   
     <div class="mat-elevation-z8">
@@ -10,7 +10,9 @@
         <!-- Position Column -->
         <ng-container matColumnDef="numero">
             <th mat-header-cell *matHeaderCellDef>No</th>
-            <td mat-cell *matCellDef="let movie; let i = index">{{ i + 1 }}</td>
+            <td mat-cell *matCellDef="let movie; let i = index">
+              {{ i + 1 + (paginator.pageIndex * paginator.pageSize) }}
+            </td>
           </ng-container>
   
         <!-- Symbol Column -->
@@ -29,19 +31,19 @@
   
         <!-- Symbol Column -->
         <ng-container matColumnDef="accion">
-            <th mat-header-cell *matHeaderCellDef>Acciones</th>
-            <td mat-cell *matCellDef="let movie" class="acciones-cell">
-              <button mat-button (click)="masDetalles(movie )" class="boton-accion">
-                <mat-icon>visibility</mat-icon>
-              </button>
-              <button mat-raised-button color="accent" (click)="editar(movie)" class="boton-accion">
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button mat-raised-button color="warn" (click)="eliminar(movie)" class="boton-accion">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </td>
-          </ng-container>
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let movie" class="acciones-cell">
+            <button mat-icon-button color="primary" (click)="masDetalles(movie)" class="boton-accion">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button color="accent" (click)="editar(movie)" class="boton-accion">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminar(movie)" class="boton-accion">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
           
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

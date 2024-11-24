@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { Usuario } from '../models/usuario';
 import { UsuariosService } from '../services/usuarios.service';
 import Swal from 'sweetalert2';
+import { UsuarioLoggedService } from '../services/usuario-logged.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private router: Router,
-    private usuarioService: UsuariosService
+    private usuarioService: UsuariosService,
+    private logeadoService: UsuarioLoggedService
   ) { }
 
   ngOnInit(): void {
@@ -49,12 +51,14 @@ export class LoginComponent implements OnInit {
       console.log('Contraseña:', password);
       // Aquí puedes agregar la lógica para autenticar al usuario
       let entrada = false;
-      for (let user of this.usuarios) {
-        if (user.email === email && user.password === password) {
+
+      this.usuarios.forEach(usuario => {
+        if (usuario.email === email && usuario.password === password) {
           entrada = true;
-          break;
+          this.logeadoService.setUsuario(usuario);
         }
-      }
+      })
+
 
       if (entrada) {
         console.log("Se ingreso correctamente")

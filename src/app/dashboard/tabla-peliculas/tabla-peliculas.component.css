@@ -9,7 +9,7 @@ table {
   
   .container {
     max-width: 80%;
-    margin: 30px auto;
+    margin: 0px auto;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
@@ -57,7 +57,8 @@ table {
   .acciones-cell {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
+    margin-top: 30px;
     gap: 8px; 
     padding: 0; 
   }
